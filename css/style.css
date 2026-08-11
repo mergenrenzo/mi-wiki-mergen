@@ -1,33 +1,18 @@
 body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: lightgray;
+    color: #444;
+}
+
+.contenedor{
     display: grid;
-
     grid-template-columns: 1fr 4fr;
-
     grid-template-rows: auto 1fr auto;
-
     grid-template-areas:
-        "header header"
-        "aside main"
-        "footer footer";
+    "header header"
+    "aside main"
+    "footer footer";
     gap: 10px;
-}
-
-header{
-    grid-area: header;
-    border: 2px solid black;
-}
-
-aside{
-    grid-area: aside;
-    border: 2px solid black;
-}
-
-main{
-    grid-area: main;
-    border: 2px solid black;
-}
-
-footer{
-    grid-area: footer;
-    border: 2px solid black;
+    padding: 10px;
 }
