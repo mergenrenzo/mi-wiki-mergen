@@ -69,3 +69,60 @@ main h2, main h3 {
     justify-content: space-between;
     align-items: center;
 }
+
+/*MODO OSCURO*/
+body.oscuro {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.oscuro header,
+body.oscuro main,
+body.oscuro aside,
+body.oscuro section {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-color: #333333;
+}
+
+body.oscuro a {
+    color: #4dabf7;
+}
+
+body.oscuro a:visited {
+    color: #cc5de8;
+}
+
+body.oscuro input,
+body.oscuro textarea {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+/*TAMAÑO DE TEXTO Y ESTADO ACTIVO*/
+
+.pequeno {
+    font-size: 0.85rem;
+}
+
+.estandar {
+    font-size: 1rem;
+}
+
+.grande {
+    font-size: 1.2rem;
+}
+
+aside button.activo {
+    background-color: #333333;
+    color: #ffffff;
+    font-weight: bold;
+    border: 2px solid #000000;
+}
+
+body.oscuro aside button.activo {
+    background-color: #4dabf7;
+    color: #121212;
+    border-color: #ffffff;
+}
