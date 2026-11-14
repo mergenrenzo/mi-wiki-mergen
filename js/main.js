@@ -60,3 +60,67 @@ titulosArticulo.forEach((titulo) => {
         }
     });
 });
+
+// Funcionalidad: Sección de Discusión(Contador, Validación y Gestión de Comentarios)
+const campoComentario = document.querySelector("#comentario");
+const parrafoContador = document.querySelector("#contador");
+const formComentario = document.querySelector("#form-comentario");
+const campoNombre = document.querySelector("#nombre");
+const parrafoAviso = document.querySelector("#aviso");
+const listaComentarios = document.querySelector("#lista-comentarios");
+const MAXIMO = 200;
+const MINIMO = 10;
+
+campoComentario.addEventListener("input", () => {
+    const cantidadActual = campoComentario.value.length;
+    parrafoContador.textContent = `Caracteres: ${cantidadActual} / ${MAXIMO}`;
+});
+
+formComentario.addEventListener("submit", (e) => {
+
+    e.preventDefault();
+
+    parrafoAviso.textContent = "";
+    campoNombre.classList.remove("error");
+    campoComentario.classList.remove("error");
+    const nombreLimpio = campoNombre.value.trim();
+    if (nombreLimpio === "") {
+        parrafoAviso.textContent = "Por favor, ingresá un nombre válido.";
+        campoNombre.classList.add("error");
+        campoNombre.focus();
+        return;
+    }
+
+    const comentarioLimpio = campoComentario.value.trim();
+    const largoComentario = comentarioLimpio.length;
+
+    if (largoComentario < MINIMO || largoComentario > MAXIMO) {
+        parrafoAviso.textContent = `El comentario debe tener entre ${MINIMO} y ${MAXIMO} caracteres.`;
+        campoComentario.classList.add("error");
+        campoComentario.focus();
+        return;
+    }
+
+    const itemLista = document.createElement("li");
+    const spanNombre = document.createElement("strong");
+    const spanTexto = document.createElement("p");
+    const botonBorrar = document.createElement("button");
+
+    spanNombre.textContent = nombreLimpio;
+    spanTexto.textContent = comentarioLimpio;
+    botonBorrar.textContent = "Borrar";
+    botonBorrar.classList.add("btn-borrar");
+    itemLista.append(spanNombre);
+    itemLista.append(spanTexto);
+    itemLista.append(botonBorrar);
+    listaComentarios.append(itemLista);
+    formComentario.reset();
+    parrafoContador.textContent = `Caracteres: 0 / ${MAXIMO}`;
+});
+
+listaComentarios.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-borrar")) {
+        const itemAEliminar = e.target.parentElement;
+        itemAEliminar.remove();
+    }
+});
