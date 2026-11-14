@@ -42,3 +42,21 @@ botonesTamano.forEach((boton) => {
         boton.classList.add("activo");
     });
 });
+
+// Funcionalidad: Secciones plegables
+
+titulosArticulo.forEach((titulo) => {
+    const textoOriginal = titulo.textContent;
+    titulo.textContent = `${textoOriginal} ▾`;
+
+    titulo.addEventListener("click", () => {
+        const seccion = titulo.parentElement;
+        seccion.classList.toggle("plegada");
+
+        if (seccion.classList.contains("plegada")) {
+            titulo.textContent = `${textoOriginal} ▸`;
+        } else {
+            titulo.textContent = `${textoOriginal} ▾`;
+        }
+    });
+});

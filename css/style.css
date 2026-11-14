@@ -126,3 +126,13 @@ body.oscuro aside button.activo {
     color: #121212;
     border-color: #ffffff;
 }
+
+/*SECCIONES PLEGABLES*/
+
+.plegada > * {
+    display: none;
+}
+
+.plegada > h2 {
+    display: block;
+}
